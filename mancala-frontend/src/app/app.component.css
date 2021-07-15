@@ -2,3 +2,7 @@ h1 {
 text-align: center;
 line-height: 100px;
 }
+
+html, body {
+  background-color: #f7e7be !important;
+}

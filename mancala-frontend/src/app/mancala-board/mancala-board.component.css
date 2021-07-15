@@ -1,9 +1,13 @@
+html, body {
+  background-color: #f7e7be !important;
+}
+
 table {
 
-  border: 2px solid #5c3e35;
+  border: 2px solid #009f92;
   width: 50%;
   border-radius: 25px;
-  background: #9e6b4e;
+  background: #009f92c2;
   padding: 20px;
   width: 800px;
   height: 150px;
@@ -13,29 +17,37 @@ table {
 
 td {
   text-align: center;
-  background-color:#764e3e;
+  background-color:#fe9e84cf;
   height:50px;
   width:50px;
   border-radius:50%;
-  border:5px solid #5c3e35;
+  border:5px solid #00777b;
   margin:auto;
-  color:#fff;
+  color:#000;
   line-height:50px;
   text-align:center
 
 }
-.footer {
-   position:   absolute;
-   bottom:      0;
-   height:     200px;
-   width:      100%;
+
+#outer
+{
+    width:100%;
+    text-align: center;
 }
-.main {
-   position:   absolute;
-   top:      50px;
-   bottom:      200px;
-   width:       100%;
+
+
+.inner, button
+{
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
 }
+button{
+  border-color: #e0c06c;
+  color: #f7e7be;
+  background: #fe9e84;
+}
+
 p, h1 {
 text-align: center;
 line-height: 100px;
@@ -44,11 +56,4 @@ line-height: 100px;
 p {
 font-size: 150%;
 }
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+

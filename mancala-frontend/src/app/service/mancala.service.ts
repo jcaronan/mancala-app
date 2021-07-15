@@ -12,7 +12,7 @@ export class MancalaService {
 
   constructor(private http: HttpClient) { }
 
-  private api_url = 'http://localhost:8080/api/v1/mancala';
+  private api_url = 'http://localhost:8080/api/v1/game';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' , 'Access-Control-Allow-Origin' : '*'})
   };
