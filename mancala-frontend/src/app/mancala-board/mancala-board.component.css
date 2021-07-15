@@ -1,0 +1,54 @@
+table {
+
+  border: 2px solid #5c3e35;
+  width: 50%;
+  border-radius: 25px;
+  background: #9e6b4e;
+  padding: 20px;
+  width: 800px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  text-align: center;
+  background-color:#764e3e;
+  height:50px;
+  width:50px;
+  border-radius:50%;
+  border:5px solid #5c3e35;
+  margin:auto;
+  color:#fff;
+  line-height:50px;
+  text-align:center
+
+}
+.footer {
+   position:   absolute;
+   bottom:      0;
+   height:     200px;
+   width:      100%;
+}
+.main {
+   position:   absolute;
+   top:      50px;
+   bottom:      200px;
+   width:       100%;
+}
+p, h1 {
+text-align: center;
+line-height: 100px;
+}
+
+p {
+font-size: 150%;
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

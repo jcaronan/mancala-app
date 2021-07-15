@@ -1,0 +1,43 @@
+<div class="center">
+  <p>Player's turn: {{playerTurn}}</p>
+  <p *ngIf="mancala.gameOver">GAME OVER! THE WINNER IS {{mancala.winner}}</p>
+</div>
+<div class="main">
+  <p>P1</p>
+  <table>
+    <tr>
+      <td rowspan="3">{{mancala.p1Pits[6]}}</td>
+    </tr>
+    <tr>
+      <td (click)="move(mancala.id, player.ONE, 5)">{{mancala.p1Pits[5]}}</td>
+      <td (click)="move(mancala.id, player.ONE, 4)">{{mancala.p1Pits[4]}}</td>
+      <td (click)="move(mancala.id, player.ONE, 3)">{{mancala.p1Pits[3]}}</td>
+      <td (click)="move(mancala.id, player.ONE, 2)">{{mancala.p1Pits[2]}}</td>
+      <td (click)="move(mancala.id, player.ONE, 1)">{{mancala.p1Pits[1]}}</td>
+      <td (click)="move(mancala.id, player.ONE, 0)">{{mancala.p1Pits[0]}}</td>
+      <td rowspan="2">{{mancala.p2Pits[6]}}</td>
+    </tr>
+    <tr>
+      <td (click)="move(mancala.id, player.TWO, 0)" >{{mancala.p2Pits[0]}}</td>
+      <td (click)="move(mancala.id, player.TWO, 1)" >{{mancala.p2Pits[1]}}</td>
+      <td (click)="move(mancala.id, player.TWO, 2)" >{{mancala.p2Pits[2]}}</td>
+      <td (click)="move(mancala.id, player.TWO, 3)" >{{mancala.p2Pits[3]}}</td>
+      <td (click)="move(mancala.id, player.TWO, 4)" >{{mancala.p2Pits[4]}}</td>
+      <td (click)="move(mancala.id, player.TWO, 5)" >{{mancala.p2Pits[5]}}</td>
+    </tr>
+  </table>
+  <p>P2</p>
+  <br/>
+  <br/>
+</div>
+<div class="footer">
+  <div class="center">
+    <button (click)="createGame()">NEW GAME</button>
+    <button (click)="resetGame(mancala.id)">RESET GAME</button>
+  </div>
+</div>
+
+
+
+
+
