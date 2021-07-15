@@ -3,8 +3,6 @@ package com.bol.mancala.helper;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class MancalaBoard {
     private PlayerZone p1Zone;
@@ -105,7 +103,7 @@ public class MancalaBoard {
 
     }
 
-    public int startDropping(Player player, PlayerZone activeZone, int stones, int start) {
+    private int startDropping(Player player, PlayerZone activeZone, int stones, int start) {
         int currentPit = start;
         while(stones != EMPTY_PIT) {
             if(BIG_PIT == currentPit) {
@@ -123,29 +121,13 @@ public class MancalaBoard {
         return currentPit;
     }
 
-    public PlayerZone getOpponentSide(Player playerSide) {
-        if(Player.P1 == playerSide) {
-            return this.getP2Zone();
-        } else {
-            return this.getP1Zone();
-        }
-    }
-
-    public PlayerZone getPlayerZone(Player player) {
-        if(Player.P1 == player) {
-            return this.getP1Zone();
-        } else {
-            return this.getP2Zone();
-        }
-    }
-
-    public void dropStone(List<Integer> pits, int index) {
+    private void dropStone(List<Integer> pits, int index) {
         Integer value = pits.get(index);
         value = value + 1;
         pits.set(index, value);
     }
 
-    public void checkIfGameOver(PlayerZone activeZone, Player player) {
+    private void checkIfGameOver(PlayerZone activeZone, Player player) {
         if(player == activeZone.getPlayerSide()
                 && (Collections.frequency(activeZone.getPits(), EMPTY_PIT) == activeZone.getPits().size() - 1)
                     && activeZone.getPits().get(BIG_PIT) != EMPTY_PIT) {
@@ -155,7 +137,7 @@ public class MancalaBoard {
         }
     }
 
-    public void collectStonesLeftOnBoard(Player player) {
+    private void collectStonesLeftOnBoard(Player player) {
         PlayerZone opponentSide = getOpponentSide(player);
         int sum = opponentSide.getPits().stream().mapToInt(Integer::intValue).sum();
         for(int i = 0; i < PIT_SIZE; i++) {
@@ -172,6 +154,22 @@ public class MancalaBoard {
             return Player.P1.toString();
         } else {
             return Player.P2.toString();
+        }
+    }
+
+    public PlayerZone getOpponentSide(Player playerSide) {
+        if(Player.P1 == playerSide) {
+            return this.getP2Zone();
+        } else {
+            return this.getP1Zone();
+        }
+    }
+
+    public PlayerZone getPlayerZone(Player player) {
+        if(Player.P1 == player) {
+            return this.getP1Zone();
+        } else {
+            return this.getP2Zone();
         }
     }
 

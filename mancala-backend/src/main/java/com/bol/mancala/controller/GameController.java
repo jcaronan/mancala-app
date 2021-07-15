@@ -6,6 +6,8 @@ import com.bol.mancala.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -30,20 +32,27 @@ public class GameController {
     }
 
     @PostMapping("/move")
-    public ResponseEntity<MancalaDto> moveStone(@Valid @RequestBody PlayerCommand playerCommand){
+    public ResponseEntity<MancalaDto> moveStone(@Valid @RequestBody PlayerCommand playerCommand, BindingResult result) throws BindException {
+        if (result.hasErrors()) {
+            throw new BindException(result);
+        }
         MancalaDto mancalaDto = gameService.moveStone(playerCommand.getId(),playerCommand.getPlayer(), playerCommand.getPitIndex());
         return ResponseEntity.ok(mancalaDto);
     }
 
     @PostMapping("reset")
-    public ResponseEntity<MancalaDto> reset(@Valid @NotNull @RequestParam Long id) {
+    public ResponseEntity<MancalaDto> reset(@Valid @NotNull @RequestParam Long id, BindingResult result) throws BindException {
+        if (result.hasErrors()) {
+            throw new BindException(result);
+        }
         MancalaDto mancalaDto = gameService.resetGame(id);
         return ResponseEntity.ok(mancalaDto);
     }
 
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    @ExceptionHandler(BindException.class)
+    public Map<String, String> handleValidationExceptions(BindException ex) {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
